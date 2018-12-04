@@ -49,10 +49,10 @@ class StanfordNLP:
 
 if __name__ == '__main__':
     sNLP = StanfordNLP()
-    text = 'A blog post using Stanford CoreNLP Server. Visit www.khalidalnajjar.com for more details.'
-    print "Annotate:", sNLP.annotate(text)
-    print "POS:", sNLP.pos(text)
-    print "Tokens:", sNLP.word_tokenize(text)
+    text = process.argv[3]
     print "NER:", sNLP.ner(text)
-    print "Parse:", sNLP.parse(text)
-    print "Dep Parse:", sNLP.dependency_parse(text)
+    sNLP.app.add_url_rule('/getTime', 'ner', sNLP.ner,
+                             methods=['post'])
+    sNLP.app.add_url_rule('/getLocation', 'ner', sNLP.ner,
+                             methods=['post'])
+    sNLP.app.run(host='0.0.0.0', port=8000)
