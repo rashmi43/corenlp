@@ -7,7 +7,7 @@ actions:
     http:
       port: 8080
       method: post
-      path: /write
+      path: /getTime
     arguments:
       text:
         type: string
@@ -18,12 +18,11 @@ actions:
     http:
       port: 8080
       method: get
-      path: /read/{{text}}
+      path: /getLocation
     arguments:
       text:
         type: string
-        in: path
-        required: true
+        in: requestBody
     output:
       type: string
 environment:
