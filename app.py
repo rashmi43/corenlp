@@ -47,8 +47,8 @@ class StanfordNLP:
 
 if __name__ == '__main__':
     sNLP = StanfordNLP()
-    text = process.argv[2]
-    print "NER:", sNLP.ner(text)
+    text = 'My text contains location Florida and data 12th of December'
+    print("NER:", sNLP.ner(text))
     sNLP.app.add_url_rule('/getTime', 'ner', sNLP.ner,
                              methods=['post'])
     sNLP.app.add_url_rule('/getLocation', 'ner', sNLP.ner,
