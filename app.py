@@ -53,4 +53,4 @@ if __name__ == '__main__':
                              methods=['post'])
     sNLP.app.add_url_rule('/getLocation', 'ner', sNLP.ner,
                              methods=['post'])
-    sNLP.app.run(host='0.0.0.0', port=8000)
+    sNLP.app.run(host='0.0.0.0', port=8080)
