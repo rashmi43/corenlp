@@ -1,13 +1,11 @@
-'''
-A sample code usage of the python package stanfordcorenlp to access a Stanford CoreNLP server.
-Written as part of the blog post: https://www.khalidalnajjar.com/how-to-setup-and-use-stanford-corenlp-server-with-python/ 
-'''
-
 from stanfordcorenlp import StanfordCoreNLP
 import logging
 import json
+from flask import Flask, make_response, request
 
 class StanfordNLP:
+    app = Flask(__name__)
+    
     def __init__(self, host='http://localhost', port=9000):
         self.nlp = StanfordCoreNLP(host, port=port,
                                    timeout=30000)  # , quiet=False, logging_level=logging.DEBUG)
@@ -49,7 +47,7 @@ class StanfordNLP:
 
 if __name__ == '__main__':
     sNLP = StanfordNLP()
-    text = process.argv[3]
+    text = process.argv[2]
     print "NER:", sNLP.ner(text)
     sNLP.app.add_url_rule('/getTime', 'ner', sNLP.ner,
                              methods=['post'])
